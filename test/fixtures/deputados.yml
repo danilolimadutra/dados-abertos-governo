@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cod_dep: 1
+  uri: MyString
+  nome: MyString
+  sigla_partido: MyString
+  uri_partido: MyString
+  sigla_uf: MyString
+  id_legislatura: 1
+  url_foto: MyString
+
+two:
+  cod_dep: 1
+  uri: MyString
+  nome: MyString
+  sigla_partido: MyString
+  uri_partido: MyString
+  sigla_uf: MyString
+  id_legislatura: 1
+  url_foto: MyString

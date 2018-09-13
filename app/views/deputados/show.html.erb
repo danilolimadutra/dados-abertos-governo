@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cod dep:</strong>
+  <%= @deputado.cod_dep %>
+</p>
+
+<p>
+  <strong>Uri:</strong>
+  <%= @deputado.uri %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @deputado.nome %>
+</p>
+
+<p>
+  <strong>Sigla partido:</strong>
+  <%= @deputado.sigla_partido %>
+</p>
+
+<p>
+  <strong>Uri partido:</strong>
+  <%= @deputado.uri_partido %>
+</p>
+
+<p>
+  <strong>Sigla uf:</strong>
+  <%= @deputado.sigla_uf %>
+</p>
+
+<p>
+  <strong>Id legislatura:</strong>
+  <%= @deputado.id_legislatura %>
+</p>
+
+<p>
+  <strong>Url foto:</strong>
+  <%= @deputado.url_foto %>
+</p>
+
+<%= link_to 'Edit', edit_deputado_path(@deputado) %> |
+<%= link_to 'Back', deputados_path %>
