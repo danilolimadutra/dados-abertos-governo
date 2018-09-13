@@ -1,57 +1,83 @@
-<%= form_with(model: deputado, local: true) do |form| %>
-  <% if deputado.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(deputado.errors.count, "error") %> prohibited this deputado from being saved:</h2>
+<%= form_for @deputado, :html => { :class => "form-horizontal deputado" } do |f| %>
 
-      <ul>
-      <% deputado.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @deputado.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@deputado.errors.count, "error") %> prohibited this deputado from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @deputado.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :cod_dep %>
-    <%= form.number_field :cod_dep %>
+  <div class="form-group">
+    <%= f.label :cod_dep, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :cod_dep, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:cod_dep) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :uri, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :uri, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:uri) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nome, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :nome, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:nome) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sigla_partido, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sigla_partido, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sigla_partido) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :uri_partido, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :uri_partido, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:uri_partido) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sigla_uf, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :sigla_uf, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:sigla_uf) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :id_legislatura, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :id_legislatura, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:id_legislatura) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :url_foto, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :url_foto, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:url_foto) %>
   </div>
 
-  <div class="field">
-    <%= form.label :uri %>
-    <%= form.text_field :uri %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                deputados_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sigla_partido %>
-    <%= form.text_field :sigla_partido %>
-  </div>
-
-  <div class="field">
-    <%= form.label :uri_partido %>
-    <%= form.text_field :uri_partido %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sigla_uf %>
-    <%= form.text_field :sigla_uf %>
-  </div>
-
-  <div class="field">
-    <%= form.label :id_legislatura %>
-    <%= form.number_field :id_legislatura %>
-  </div>
-
-  <div class="field">
-    <%= form.label :url_foto %>
-    <%= form.text_field :url_foto %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

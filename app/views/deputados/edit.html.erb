@@ -1,6 +1,5 @@
-<h1>Editing Deputado</h1>
-
-<%= render 'form', deputado: @deputado %>
-
-<%= link_to 'Show', @deputado %> |
-<%= link_to 'Back', deputados_path %>
+<%- model_class = Deputado -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>
