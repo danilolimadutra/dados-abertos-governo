@@ -1,4 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lista de Deputados</h1>
-<%= @lista_deputados %>
+<h1>Lista de Deputados da Câmara</h1>
+<div class="container">
+  <% ajusta_grid(@lista_deputados, 4).each do |linha| %>
+    <div class="row">
+    <% linha.each do |deputado| %>
+      <div class="col-md-3">
+        <%= render partial: 'card_deputado', locals: { deputado: deputado } %>
+      </div>
+    <% end %>    
+    </div>
+  <% end %>
+</div>
+
+
+
+    

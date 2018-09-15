@@ -1,3 +1,4 @@
+# Classe para consulta na API dados abertos do governo
 class DadosAbertosService
   attr_reader :base_url
 
@@ -12,9 +13,15 @@ class DadosAbertosService
     }
   end
 
+  # Faz a requisição e retorna a lista de deputados
   def deputados
-    url = @base_url+'/deputados'
+    url = @base_url + '/deputados'
     request = RestClient.get(url, headers)
-    JSON.parse(request.body)
+    retorno = JSON.parse(request.body)
+
+    lista = []
+    retorno['dados'].each do |deputado|
+      lista << Deputado
+    end
   end
 end
