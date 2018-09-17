@@ -1,9 +1,10 @@
 # Classe para consulta na API dados abertos do governo
 class DadosAbertosService
-  attr_reader :base_url
+  attr_reader :base_url, :params
 
-  def initialize
+  def initialize(params = {})
     @base_url = 'https://dadosabertos.camara.leg.br/api/v2'
+    @params = params
   end
 
   def headers
@@ -13,15 +14,18 @@ class DadosAbertosService
     }
   end
 
-  # Faz a requisição e retorna a lista de deputados
-  def deputados
+  # Faz a requisicao e retorna a lista de deputados
+  def deputados()
     url = @base_url + '/deputados'
-    request = RestClient.get(url, headers)
-    retorno = JSON.parse(request.body)
 
-    lista = []
-    retorno['dados'].each do |deputado|
-      lista << Deputado
-    end
+    # Inclui a pagina na URL
+    url += "?pagina=#{@params[:pagina]}" if @params[:pagina]
+
+    RestClient::Resource.new(url, { headers: headers } )
+  end
+
+  # Realiza o parse do request para JSON
+  def parse(request)
+    JSON.parse(request.body)
   end
 end

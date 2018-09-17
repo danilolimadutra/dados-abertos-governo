@@ -1,0 +1,8 @@
+<div class="container">
+  <span class="col-md-6">
+    <%= raw exibe_botao_pagina(prox_pagina: false, pagina: params[:pagina].to_i)  %>
+  </span>
+  <span class="col-md-6 text-right">
+    <%= raw exibe_botao_pagina(prox_pagina: true, pagina: params[:pagina].to_i)  %>
+  </span>
+</div>

@@ -36,7 +36,15 @@ module DeputadosHelper
     end
 
     grid << grid_line.map(&:clone) if grid_line.size
+  end
 
-    grid
+  # monta o botao de paginacao
+  def exibe_botao_pagina(prox_pagina: false, pagina: 1)
+    unless prox_pagina
+      return link_to '<< Página anterior', listar_deputados_path(:pagina => (pagina - 1)), :class => 'btn btn-success' if pagina > 1
+    end
+    if prox_pagina
+      return link_to 'Próxima página >>', listar_deputados_path(:pagina => (pagina + 1)), :class => 'btn btn-success'
+    end
   end
 end

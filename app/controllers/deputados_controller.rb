@@ -61,9 +61,16 @@ class DeputadosController < ApplicationController
     end
   end
 
-  # Listar deputados
+  # request/GET para retornar a listar deputados
   def listar
-    @lista_deputados = DadosAbertosService.new().deputados
+    service_params = {}
+    service_params[:pagina] = params[:pagina]
+    @params = params
+
+    service = DadosAbertosService.new(service_params)
+    request = service.deputados.get
+    resource = service.parse(request)
+    @lista_deputados = resource['dados']
   end
 
   private
@@ -74,6 +81,6 @@ class DeputadosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deputado_params
-      params.require(:deputado).permit(:cod_dep, :uri, :nome, :sigla_partido, :uri_partido, :sigla_uf, :id_legislatura, :url_foto)
+      params.require(:deputado).permit(:cod_dep, :uri, :nome, :sigla_partido, :uri_partido, :sigla_uf, :id_legislatura, :url_foto, :pagina)
     end
 end
