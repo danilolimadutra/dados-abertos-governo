@@ -1,5 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+<h3>Pesquisa</h3>
+<div class="container">
+  <div class="form-row">
+    <%= form_tag listar_deputados_path, method: :get, id: "pesquisa-deputado-form" do %>
+      <div class="col-md-4">
+        <%= text_field_tag :nome, params[:nome], class: "form-control search-box", placeholder: "Nome do deputado" %>
+      </div>
+      <div class="col-md-2">
+        <%= select_tag :sigla_uf, options_for_select([["Todos os estados" , ""], 
+                                                ["Acre" , "AC"], 
+                                                ["Alagoas", "AL"]]), { :class => 'form-control' } %>
+      </div>
+      <div class="col-md-2">
+        <%= button_tag(type: :submit, class: "btn btn-success") do %>
+          <i class="fa fa-search"></i> Pesquisar
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <h1>Lista de Deputados da Câmara</h1>
 
 <div class="container">

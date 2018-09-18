@@ -1,4 +1,5 @@
 module DeputadosHelper
+  #FIXME: corrigir o problema de abreviação de nomes quando composto por dois nomes
   # Abrevia os nomes do meio
   def abrevia_nome(nome_completo)
     nomes = nome_completo.split(' ')
@@ -37,7 +38,7 @@ module DeputadosHelper
 
     grid << grid_line.map(&:clone) if grid_line.size
   end
-
+  #FIXME: corrigir problema com contador de proxima pagina quando é a primeira página sem numeração
   # monta o botao de paginacao
   def exibe_botao_pagina(prox_pagina: false, pagina: 1)
     unless prox_pagina

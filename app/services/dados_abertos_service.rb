@@ -19,7 +19,14 @@ class DadosAbertosService
     url = @base_url + '/deputados'
 
     # Inclui a pagina na URL
-    url += "?pagina=#{@params[:pagina]}" if @params[:pagina]
+    url += '?' if @params
+
+    @params.each do |key, value|
+      url += "#{key}=#{value}&"
+    end
+    puts 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    puts url
+
 
     RestClient::Resource.new(url, { headers: headers } )
   end
