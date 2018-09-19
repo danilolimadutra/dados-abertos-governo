@@ -15,18 +15,17 @@ class DadosAbertosService
   end
 
   # Faz a requisicao e retorna a lista de deputados
-  def deputados()
+  def deputados
     url = @base_url + '/deputados'
 
     # Inclui a pagina na URL
-    url += '?' if @params
+    url += '?' if @params.size > 0
 
     @params.each do |key, value|
-      url += "#{key}=#{value}&"
+      url += "#{key}=#{value}&" if value != ''
     end
-    puts 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    puts url
-
+    # remover o & que fica do residuo do each
+    #url = url.chop
 
     RestClient::Resource.new(url, { headers: headers } )
   end
