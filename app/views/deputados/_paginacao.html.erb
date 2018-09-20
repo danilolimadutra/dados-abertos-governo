@@ -1,8 +1,8 @@
 <div class="container">
   <span class="col-md-6">
-    <%= raw exibe_botao_pagina(params, false)  %>
+    <%= raw exibe_botao_pagina(params, false) %>
   </span>
   <span class="col-md-6 text-right">
-    <%= raw exibe_botao_pagina(params, true)  %>
+    <%= raw exibe_botao_pagina(params, true) if @proxima_pagina %>
   </span>
 </div>

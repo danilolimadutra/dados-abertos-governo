@@ -40,41 +40,26 @@ module DeputadosHelper
     grid << grid_line.map(&:clone) if grid_line.size
   end
 
-  # monta o botao de paginacao
-  def exibe_botao_pagina_old(prox_pagina: false, pagina: 1)
-    unless prox_pagina
-      return link_to '<< Página anterior', listar_deputados_path(:pagina => (pagina - 1)), :class => 'btn btn-success' if pagina > 1
-    end
-    if prox_pagina
-      if pagina == 0
-        return link_to 'Próxima página >>', listar_deputados_path(:pagina => (pagina + 2)), :class => 'btn btn-success'
-      else
-        return link_to 'Próxima página >>', listar_deputados_path(:pagina => (pagina + 1)), :class => 'btn btn-success'
-      end
-    end
-  end
-
+  # Monta os botoes de paginacao
   def exibe_botao_pagina(url_params, prox_pagina)
-    params = url_params.permit(:pagina, :nome, :sigla_uf)
+    params = url_params.permit(:pagina, :nome, :sigla_uf, :itens, :ordenar_por)
     params[:pagina] = params[:pagina].to_i
     pagina_atual = params[:pagina]
-    # FIXME: remover parametros vazios
     # TODO: contar a quantidade tamanho da lista com quantidade de itens e ocultar botão próxima página
+    # remove valores vazios
+    params.delete_if { |_, v| v.nil? || v == '' }
 
-    unless prox_pagina
+    if prox_pagina == false && pagina_atual > 1
       params[:pagina] = params[:pagina] - 1
-      return link_to '<< Página anterior', listar_deputados_path(params), :class => 'btn btn-success' if pagina_atual > 1
+      return link_to '<< Página anterior', listar_deputados_path(params), :class => 'btn btn-success' 
     end
     if prox_pagina
-      if pagina_atual == 0
-        params[:pagina] =  2
-        puts "#{params.inspect} ------------------------------------------------ "
-        return link_to 'Próxima página >>', listar_deputados_path(params), :class => 'btn btn-success'
+      if pagina_atual.zero?
+        params[:pagina] = 2
       else
         params[:pagina] = params[:pagina] + 1
-        puts "#{params.inspect} ------------------------------------------------ "
-        return link_to 'Próxima página >>', listar_deputados_path(params), :class => 'btn btn-success'
       end
+      return link_to 'Próxima página >>', listar_deputados_path(params), :class => 'btn btn-success'
     end
   end
 end

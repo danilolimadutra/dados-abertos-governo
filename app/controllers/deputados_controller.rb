@@ -70,6 +70,8 @@ class DeputadosController < ApplicationController
     request = service.deputados.get
     resource = service.parse(request)
     @lista_deputados = resource['dados']
+
+    @proxima_pagina = service.proxima_pagina(@lista_deputados.size)
   end
 
   private
@@ -80,14 +82,16 @@ class DeputadosController < ApplicationController
 
     def set_service_params
       @service_params = {}
-      @service_params[:pagina] = params[:pagina] if params[:pagina]
-      @service_params[:nome] = params[:nome] if params[:nome]
-      @service_params[:siglaUf] = params[:sigla_uf] if params[:sigla_uf]
+      @service_params[:itens] = params[:itens]
+      @service_params[:pagina] = params[:pagina]
+      @service_params[:nome] = params[:nome]
+      @service_params[:siglaUf] = params[:sigla_uf]
+      @service_params[:ordenarPor] = params[:ordenar_por]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deputado_params
       params.require(:deputado).permit(:cod_dep, :uri, :nome, :sigla_partido, :uri_partido, :sigla_uf, :id_legislatura, :url_foto,
-                                        :pagina, :nome)
+                                        :pagina, :nome, :itens, :ordenar_por)
     end
 end

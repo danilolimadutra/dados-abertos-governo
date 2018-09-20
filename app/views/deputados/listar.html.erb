@@ -8,9 +8,44 @@
         <%= text_field_tag :nome, params[:nome], class: "form-control search-box", placeholder: "Nome do deputado" %>
       </div>
       <div class="col-md-2">
-        <%= select_tag :sigla_uf, options_for_select([["Todos os estados" , ""], 
+        <%= select_tag :sigla_uf, options_for_select([["Todos os Estados" , ""], 
                                                 ["Acre" , "AC"], 
-                                                ["Alagoas", "AL"]]), { :class => 'form-control' } %>
+                                                ["Alagoas", "AL"],
+                                                ["Amazonas", "AM"],
+                                                ["Amapá", "AP"],
+                                                ["Bahia", "BA"],
+                                                ["Ceará", "CE"],
+                                                ["Distrito Federal", "DF"],
+                                                ["Espírito Santo", "ES"],
+                                                ["Goiás", "GO"],
+                                                ["Maranhão", "MA"],
+                                                ["Minas Gerais", "MG"],
+                                                ["Mato Grosso do Sul", "MS"],
+                                                ["Mato Grosso", "MT"],
+                                                ["Pará", "PA"],
+                                                ["Paraíba", "PB"],
+                                                ["Pernambuco", "PE"],
+                                                ["Piauí", "PI"],
+                                                ["Paraná", "PR"],
+                                                ["Rio de Janeiro", "RJ"],
+                                                ["Rio Grande do Norte", "RN"],
+                                                ["Rondônia", "RO"],
+                                                ["Roraima", "RR"],
+                                                ["Rio Grande do Sul", "RS"],
+                                                ["Santa Catarina", "SC"],
+                                                ["Sergipe", "SE"],
+                                                ["São Paulo", "SP"],
+                                                ["Tocantins", "TO"]], @params[:sigla_uf]), { class: 'form-control' } %>
+      </div>
+      <div class="col-md-2">
+        <%= select_tag :itens, options_for_select([["18 itens" , "18"], 
+                                                ["36 itens" , "36"], 
+                                                ["72 itens", "72"]], @params[:itens]), { :class => 'form-control' } %>
+      </div>
+      <div class="col-md-2">
+        <%= select_tag :ordenar_por, options_for_select([["Nome A-Z" , "nome"], 
+                                                ["Sigla do partido A-Z" , "siglaPartido"], 
+                                                ["UF A-Z", "siglaUF"]], @params[:ordenar_por]), { :class => 'form-control' } %>
       </div>
       <div class="col-md-2">
         <%= button_tag(type: :submit, class: "btn btn-success") do %>
