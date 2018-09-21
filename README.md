@@ -1,24 +1,10 @@
 # README
+BASE DE CONSULTA A CAMARA DOS DEPUTADOS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Esse site apresenta algumas informações sobre os partidos políticos e deputados da Câmara. Todas as informações são consultadas em tempo real na base de dados pública da Câmara.
 
-Things you may want to cover:
+Esse é um projeto pessoal realizado com o objetivo de fazer um estudo prático. foi implementado totalmente em Ruby on Rails. fique a vontade para baixar, clonar ou fazer um fork.
 
-* Ruby version
+Saiba mais sobre os dados abertos da câmara em: https://dadosabertos.camara.leg.br/
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A listagem de deputados é alimentada a partir da seguinte API RESTful: https://dadosabertos.camara.leg.br/swagger/api.html

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-  root 'deputados#listar'
+  get 'sobre', to: 'pages#sobre'
+  root 'pages#sobre'
 
   resources :deputados do
     collection do
