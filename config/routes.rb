@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'deputados#listar'
+
   resources :deputados do
     collection do
       get :listar
